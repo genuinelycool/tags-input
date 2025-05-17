@@ -2,11 +2,15 @@
     <div v-for="(tag, index) in tags">
         {{ index + " : " + tag }}
     </div>
+    <hr />
+
+    {{ newTag }}
+
     <input 
         type="text" 
-        :value="newTag" 
-        @keydown.enter="tags.push($event.target.value)" 
-        @keydown.tab.prevent="tags.push($event.target.value)" 
+        v-model.trim="newTag"
+        @keydown.enter="tags.push(newTag)" 
+        @keydown.tab.prevent="tags.push(newTag)"
     />
 </template>
 
