@@ -13,7 +13,7 @@
         @keydown.enter="addNewTag"
         @keydown.delete="removeLastTag"
         @keydown.tab.prevent="addNewTag"
-        :class="{ 'tag-exits': tags.includes(newTag) }"
+        :class="{ 'tag-exits': isTagExits }"
     />
 </template>
 
@@ -21,11 +21,16 @@
 export default {
     data: () => ({
         tags: ["vue", "react", "angular"],
-        newTag: "preact"
+        newTag: ""
     }),
+    computed: {
+        isTagExits () {
+            return this.tags.includes(this.newTag)
+        }
+    },
     methods: {
         addNewTag () {
-            if (this.newTag) {
+            if (this.newTag && !this.isTagExits) {
                 this.tags.push(this.newTag)
                 this.newTag = ""
             }
