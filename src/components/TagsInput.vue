@@ -13,6 +13,7 @@
         @keydown.enter="addNewTag"
         @keydown.delete="removeLastTag"
         @keydown.tab.prevent="addNewTag"
+        :class="{ 'tag-exits': tags.includes(newTag) }"
     />
 </template>
 
@@ -40,3 +41,10 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+.tag-exits {
+    color: red;
+    text-decoration: line-through;
+}
+</style>
