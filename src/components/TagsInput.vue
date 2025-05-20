@@ -19,10 +19,18 @@
 
 <script>
 export default {
-    data: () => ({
-        tags: ["vue", "react", "angular"],
-        newTag: ""
-    }),
+    data () {
+        return {
+            tags: [...this.selectedTags],
+            newTag: ""
+        }
+    },
+    props: {
+        selectedTags: {
+            type: Array,
+            default: () => []
+        }
+    },
     watch: {
         newTag (newVal) {
             if (newVal.indexOf(",") > -1) {
